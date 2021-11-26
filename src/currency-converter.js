@@ -52,6 +52,8 @@ if (targetCurrency ===undefined || targetCurrency.match(regex2) ){
 
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
+let usd=1
+let cad=0.7
 
 // --------------------------------------------------
 // Step 4: Ensure that a conversion rate exists
