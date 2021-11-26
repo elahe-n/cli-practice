@@ -8,6 +8,8 @@
 // differently. There are many paths and approaches that result in a perfectly
 // valid finished product.
 const { isAmountInvalid } = require ('./validator-functions'); 
+const { isInitialCurrencyInvalid } = require ('./validator-functions'); 
+const { isTargetCurrencyInvalid } = require ('./validator-functions');
 // --------------------------------------------------
 // Step 1: Capture user input
 // --------------------------------------------------
@@ -25,19 +27,19 @@ const targetCurrency=process.argv[4];
 
 // If any of the required information is missing, display a meaningful message
 // and exit the program.
-const regex=/^[a-zA-Z]/; 
+
 
 if (isAmountInvalid(amount)){
     console.log("Ooops, there is no amount or it is less than 0 or it is not a NUMBER. recieved amount: ",amount)
     process.exit();
 }
 
-if (initialCurrency ===undefined || !(initialCurrency.match(regex)) ){
+if (isInitialCurrencyInvalid(initialCurrency)) {
     console.log("Ooops, there is no initial currency or it is not a valid input.")
     process.exit();
 }
 
-if (targetCurrency ===undefined || !(targetCurrency.match(regex)) ){
+if (isTargetCurrencyInvalid(targetCurrency) ){
     console.log("Ooops, there is no target currency or it is not a valid input.")
     process.exit();
 }
