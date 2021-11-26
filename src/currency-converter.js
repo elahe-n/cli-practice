@@ -63,6 +63,19 @@ let cad=0.7
 // If the user supplies an invalid initial or target currency, display a meaningful
 // warning message and exit the program.
 
+const supportedCurrency=['USD','CAD'];
+
+if (supportedCurrency.includes(initialCurrency.toUpperCase()) === false )
+{
+    console.log("Oops, initial currency is not in supported currency ",initialCurrency)
+    process.exit();
+}
+
+if (supportedCurrency.includes(targetCurrency.toUpperCase()) === false )
+{
+    console.log("Oops, target currency is not in supported currency ",targetCurrency)
+    process.exit();
+}
 
 // --------------------------------------------------
 // Step 5: Perform conversion
