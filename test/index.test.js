@@ -10,14 +10,37 @@
 // file. In this case we've defined the function and the corresponding test in the
 // same file for illustrative and learning purposes.
 
-function myCoolFunction() {
-  return 'Wow, what a cool function';
-}
+const { isAmountInvalid } = require ('../src/validator-functions'); 
 
-describe('myCoolFunction()', () => {
-  test('should return the message: "Wow, what a cool function"', () => {
-    const result = myCoolFunction();
+describe('isAmountInvalid()', () => {
+  test('should return True when the amount is undefined:', () => {
+    let amount;
+    const result = isAmountInvalid(amount);
+    expect(result).toBe(true);
+  });
 
-    expect(result).toBe('Wow, what a cool function');
+  test('should return True when the amount is 0:', () => {
+    const result = isAmountInvalid(0);
+    expect(result).toBe(true);
+  });
+
+  test('should return True when the amount is less than 0:', () => {
+    const result = isAmountInvalid(-1);
+    expect(result).toBe(true);
+  });
+
+  test('should return True when the amount is letter character:', () => {
+    const result = isAmountInvalid('sss');
+    expect(result).toBe(true);
+  });
+
+  test('should return True when the amount is special character:', () => {
+    const result = isAmountInvalid('%');
+    expect(result).toBe(true);
+  });
+
+  test('should return False when the amount is a NUMBER more than 0:', () => {
+    const result = isAmountInvalid(12);
+    expect(result).toBe(false);
   });
 });

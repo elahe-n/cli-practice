@@ -7,7 +7,7 @@
 // in a functional, testable program. However, please free to approach the problem
 // differently. There are many paths and approaches that result in a perfectly
 // valid finished product.
-
+const { isAmountInvalid } = require ('./validator-functions'); 
 // --------------------------------------------------
 // Step 1: Capture user input
 // --------------------------------------------------
@@ -24,9 +24,10 @@ const targetCurrency=process.argv[4];
 // Next we will ensure that the user has provided all of the require information.
 
 // If any of the required information is missing, display a meaningful message
-// and exit the program. 
-var regex=/^[a-zA-Z]/;
-if (amount ===undefined || amount <= 0 || isNaN(amount)){
+// and exit the program.
+const regex=/^[a-zA-Z]/; 
+
+if (isAmountInvalid(amount)){
     console.log("Ooops, there is no amount or it is less than 0 or it is not a NUMBER. recieved amount: ",amount)
     process.exit();
 }
@@ -103,4 +104,4 @@ else if (upperInitialCurrency === 'CAD' && upperTargetCurrency=== 'USD' ) {
 // supplied by the user.
 
 console.log(`You are submitted ${amount} ${upperInitialCurrency}`);
-console.log(`This is equal to ${convertedAmount} ${upperTargetCurrency}`);
+console.log(`This is equal to ${convertedAmount.toFixed(2)} ${upperTargetCurrency}`);
