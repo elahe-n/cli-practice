@@ -14,8 +14,9 @@
 // In this step we will capture the command line  information supplied by the user.
 
 // We will store each piece of information in a dedicated variable for later use.
-
-
+const amount=process.argv[2];
+const initialCurrency=process.argv[3];
+const targetCurrency=process.argv[4];
 
 // --------------------------------------------------
 // Step 2: Validate user input
@@ -24,8 +25,6 @@
 
 // If any of the required information is missing, display a meaningful message
 // and exit the program.
-
-
 
 // --------------------------------------------------
 // Step 3: Define currency conversion rates
@@ -39,8 +38,6 @@
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
 
-
-
 // --------------------------------------------------
 // Step 4: Ensure that a conversion rate exists
 // --------------------------------------------------
@@ -51,7 +48,6 @@
 // warning message and exit the program.
 
 
-
 // --------------------------------------------------
 // Step 5: Perform conversion
 // --------------------------------------------------
@@ -59,6 +55,8 @@
 // information, and that a rate exists for each of the currencies.
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
+
+
 
 
 
