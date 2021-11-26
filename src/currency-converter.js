@@ -86,6 +86,13 @@ if (supportedCurrency.includes(upperTargetCurrency) === false )
 // information, and that a rate exists for each of the currencies.
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
+let convertedAmount;
+if (upperInitialCurrency === 'USD' && upperTargetCurrency=== 'CAD') {
+    convertedAmount= amount/cad;
+}
+else if (upperInitialCurrency === 'CAD' && upperTargetCurrency=== 'USD' ) {
+    convertedAmount= amount*cad;
+}
 
 // --------------------------------------------------
 // Step 6: Display results
@@ -94,3 +101,6 @@ if (supportedCurrency.includes(upperTargetCurrency) === false )
 
 // This message should also include the original amount and currency information
 // supplied by the user.
+
+console.log(`You are submitted ${amount} ${upperInitialCurrency}`);
+console.log(`This is equal to ${convertedAmount} ${upperTargetCurrency}`);
