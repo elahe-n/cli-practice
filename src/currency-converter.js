@@ -25,7 +25,22 @@ const targetCurrency=process.argv[4];
 
 // If any of the required information is missing, display a meaningful message
 // and exit the program.
+var regex1=/^[a-zA-Z]+$/;
+var regex2=/^[0-9]/;
+if (amount ===undefined || amount <= 0 || amount.match(regex1)){
+    console.log("Ooops, there is no amount or it is less than 0 or it is not a NUMBER. recieved amount: ",amount)
+    process.exit();
+}
 
+if (initialCurrency ===undefined || initialCurrency.match(regex2) ){
+    console.log("Ooops, there is no initial currency or it is not a valid input.")
+    process.exit();
+}
+
+if (targetCurrency ===undefined || targetCurrency.match(regex2) ){
+    console.log("Ooops, there is no target currency or it is not a valid input.")
+    process.exit();
+}
 // --------------------------------------------------
 // Step 3: Define currency conversion rates
 // --------------------------------------------------
