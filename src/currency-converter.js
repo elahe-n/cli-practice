@@ -24,20 +24,19 @@ const targetCurrency=process.argv[4];
 // Next we will ensure that the user has provided all of the require information.
 
 // If any of the required information is missing, display a meaningful message
-// and exit the program.
-var regex1=/^[a-zA-Z]+$/;
-var regex2=/^[0-9]/;
-if (amount ===undefined || amount <= 0 || amount.match(regex1)){
+// and exit the program. 
+var regex=/^[a-zA-Z]/;
+if (amount ===undefined || amount <= 0 || isNaN(amount)){
     console.log("Ooops, there is no amount or it is less than 0 or it is not a NUMBER. recieved amount: ",amount)
     process.exit();
 }
 
-if (initialCurrency ===undefined || initialCurrency.match(regex2) ){
+if (initialCurrency ===undefined || !(initialCurrency.match(regex)) ){
     console.log("Ooops, there is no initial currency or it is not a valid input.")
     process.exit();
 }
 
-if (targetCurrency ===undefined || targetCurrency.match(regex2) ){
+if (targetCurrency ===undefined || !(targetCurrency.match(regex)) ){
     console.log("Ooops, there is no target currency or it is not a valid input.")
     process.exit();
 }
@@ -72,10 +71,6 @@ let cad=0.7
 // information, and that a rate exists for each of the currencies.
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
-
-
-
-
 
 // --------------------------------------------------
 // Step 6: Display results
