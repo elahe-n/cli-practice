@@ -64,14 +64,16 @@ let cad=0.7
 // warning message and exit the program.
 
 const supportedCurrency=['USD','CAD'];
+const upperInitialCurrency=initialCurrency.toUpperCase();
+const upperTargetCurrency=targetCurrency.toUpperCase();
 
-if (supportedCurrency.includes(initialCurrency.toUpperCase()) === false )
+if (supportedCurrency.includes(upperInitialCurrency) === false )
 {
     console.log("Oops, initial currency is not in supported currency ",initialCurrency)
     process.exit();
 }
 
-if (supportedCurrency.includes(targetCurrency.toUpperCase()) === false )
+if (supportedCurrency.includes(upperTargetCurrency) === false )
 {
     console.log("Oops, target currency is not in supported currency ",targetCurrency)
     process.exit();
