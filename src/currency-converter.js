@@ -10,6 +10,9 @@
 const { isAmountInvalid } = require ('./validator-functions'); 
 const { isInitialCurrencyInvalid } = require ('./validator-functions'); 
 const { isTargetCurrencyInvalid } = require ('./validator-functions');
+const { isInitialCurrencyExist } = require ('./rate-existence');
+const { isTargetCurrencyExist } = require ('./rate-existence');
+
 // --------------------------------------------------
 // Step 1: Capture user input
 // --------------------------------------------------
@@ -68,18 +71,16 @@ let usdToGbp=0.7
 
 // If the user supplies an invalid initial or target currency, display a meaningful
 // warning message and exit the program.
-
-const supportedCurrency=['USD','CAD','GBP'];
 const upperInitialCurrency=initialCurrency.toUpperCase();
 const upperTargetCurrency=targetCurrency.toUpperCase();
 
-if (supportedCurrency.includes(upperInitialCurrency) === false )
+if (!isInitialCurrencyExist(upperInitialCurrency))
 {
     console.log("Oops, initial currency is not in supported currency ",initialCurrency)
     process.exit();
 }
 
-if (supportedCurrency.includes(upperTargetCurrency) === false )
+if (!isTargetCurrencyExist (upperTargetCurrency))
 {
     console.log("Oops, target currency is not in supported currency ",targetCurrency)
     process.exit();
