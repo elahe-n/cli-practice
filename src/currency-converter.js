@@ -55,7 +55,10 @@ if (isTargetCurrencyInvalid(targetCurrency) ){
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
 let usd=1
-let cad=0.7
+let gbp=1
+let cadToUsd=0.7
+let cadToGbp=0.5
+let usdToGbp=0.7
 
 // --------------------------------------------------
 // Step 4: Ensure that a conversion rate exists
@@ -66,7 +69,7 @@ let cad=0.7
 // If the user supplies an invalid initial or target currency, display a meaningful
 // warning message and exit the program.
 
-const supportedCurrency=['USD','CAD'];
+const supportedCurrency=['USD','CAD','GBP'];
 const upperInitialCurrency=initialCurrency.toUpperCase();
 const upperTargetCurrency=targetCurrency.toUpperCase();
 
@@ -90,13 +93,26 @@ if (supportedCurrency.includes(upperTargetCurrency) === false )
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
 let convertedAmount;
-if (upperInitialCurrency === 'USD' && upperTargetCurrency=== 'CAD') {
-    convertedAmount= amount/cad;
-}
-else if (upperInitialCurrency === 'CAD' && upperTargetCurrency=== 'USD' ) {
-    convertedAmount= amount*cad;
+if (upperInitialCurrency === 'USD' ) {
+    if (upperTargetCurrency=== 'CAD'){
+        convertedAmount= amount/cadToUsd;}
+    else if (upperTargetCurrency=== 'GBP'){
+        convertedAmount= amount*usdToGbp;}    
 }
 
+else if (upperInitialCurrency === 'CAD' ) {
+    if ( upperTargetCurrency=== 'USD'){
+        convertedAmount= amount*cadToUsd;}
+    else if ( upperTargetCurrency=== 'GBP'){
+        convertedAmount= amount*cadToGbp;}
+}
+
+else if (upperInitialCurrency === 'GBP' ) {
+    if ( upperTargetCurrency=== 'USD'){
+        convertedAmount= amount/usdToGbp;}
+    else if ( upperTargetCurrency=== 'CAD'){
+        convertedAmount= amount/cadToGbp;}
+}
 // --------------------------------------------------
 // Step 6: Display results
 // --------------------------------------------------
