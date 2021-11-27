@@ -4,7 +4,7 @@ const isAmountInvalid=(amount) => {
 
 const regex=/^[a-zA-Z]/; 
 const isInitialCurrencyInvalid=(initialCurrency) => {
-return initialCurrency ===undefined || !(initialCurrency.match(regex))
+return (initialCurrency ===undefined || !(initialCurrency.match(regex)))
 };
 
 const isTargetCurrencyInvalid=(targetCurrency) => {

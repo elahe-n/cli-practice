@@ -11,7 +11,10 @@
 // same file for illustrative and learning purposes.
 
 const { isAmountInvalid } = require ('../src/validator-functions'); 
+const { isInitialCurrencyInvalid } = require ('../src/validator-functions'); 
+const { isTargetCurrencyInvalid } = require ('../src/validator-functions'); 
 
+// Tests for isAmountInvalid function
 describe('isAmountInvalid()', () => {
   test('should return True when the amount is undefined:', () => {
     let amount;
@@ -43,4 +46,44 @@ describe('isAmountInvalid()', () => {
     const result = isAmountInvalid(12);
     expect(result).toBe(false);
   });
+});
+// Tests for isInitialCurrencyInvalid function
+describe('isInitialCurrencyInvalid()', () => {
+  
+  test('should return True when the InitialCurrency is undefined:', () => {
+    let initialCurrency;
+    const result = isInitialCurrencyInvalid(initialCurrency);
+    expect(result).toBe(true);
+  });
+
+  test('should return True when the InitialCurrency is not letter character:', () => {
+    const result = isInitialCurrencyInvalid('&&');
+    expect(result).toBe(true);
+  });
+
+  test('should return False when the InitialCurrency is letter character:', () => {
+    const result = isInitialCurrencyInvalid('YEN');
+    expect(result).toBe(false);
+  });
+});
+
+// Tests for isTargetCurrencyInvalid function
+describe('isTargetCurrencyInvalid()', () => {
+  
+  test('should return True when the TargetCurrency is undefined:', () => {
+    let TargetCurrency;
+    const result = isTargetCurrencyInvalid(TargetCurrency);
+    expect(result).toBe(true);
+  });
+
+  test('should return True when the TargetCurrency is not letter character:', () => {
+    const result = isTargetCurrencyInvalid('&&');
+    expect(result).toBe(true);
+  });
+
+  test('should return False when the TargetCurrency is letter character:', () => {
+    const result = isTargetCurrencyInvalid('YEN');
+    expect(result).toBe(false);
+  });
+
 });
