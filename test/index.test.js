@@ -13,6 +13,8 @@
 const { isAmountInvalid } = require ('../src/validator-functions'); 
 const { isInitialCurrencyInvalid } = require ('../src/validator-functions'); 
 const { isTargetCurrencyInvalid } = require ('../src/validator-functions'); 
+const { isInitialCurrencyExist } = require ('../src/rate-existence');
+const { isTargetCurrencyExist } = require ('../src/rate-existence');
 
 // Tests for isAmountInvalid function
 describe('isAmountInvalid()', () => {
@@ -84,6 +86,36 @@ describe('isTargetCurrencyInvalid()', () => {
   test('should return False when the TargetCurrency is letter character:', () => {
     const result = isTargetCurrencyInvalid('YEN');
     expect(result).toBe(false);
+  });
+
+});
+
+// Tests for isInitialCurrencyExist function
+describe('isInitialCurrencyExist()', () => {
+  
+  test('should return False when the initialCurrency do not exist:', () => {
+    const result = isInitialCurrencyExist('YEN');
+    expect(result).toBe(false);
+  });
+
+  test('should return True when the initialCurrency exists:', () => {
+    const result = isInitialCurrencyExist('CAD');
+    expect(result).toBe(true);
+  });
+
+});
+
+// Tests for isTargetCurrencyExist function
+describe('isTargetCurrencyExist()', () => {
+  
+  test('should return False when the targetCurrency do not exist:', () => {
+    const result = isTargetCurrencyExist('YEN');
+    expect(result).toBe(false);
+  });
+
+  test('should return True when the targetCurrency exists:', () => {
+    const result = isTargetCurrencyExist('USD');
+    expect(result).toBe(true);
   });
 
 });
